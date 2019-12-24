@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Form from '../../components/form/Form';
 import Weather from '../../components/weather/Weather';
+import classes from './Layout.module.css';
 
-const Layout = () => {
+const Layout = (props) => {
     const [weather, setWeather] = useState([]);
     const APIKEY = '92b3106c3e65a153964c760a41a887c9';
 
@@ -10,6 +11,7 @@ const Layout = () => {
         const city = e.target.elements.city.value;
         const country = e.target.elements.country.value;
         e.preventDefault();
+        try{
         const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${APIKEY}`)
             .then(res => res.json())
             .then(data => data);
@@ -32,12 +34,15 @@ const Layout = () => {
                     error:"Please Type A City And Country"
                 });
             }
+        } catch(err) {
+            alert(err.message + '\n Check the name of the city!');
+        }
     };
 
+
     return (
-        <div>
+        <div className={classes.Layout}>
             <Form getWeather={fetchData} />
-            <div>
                 <Weather 
                     city={weather.city}
                     country={weather.country}
@@ -46,7 +51,6 @@ const Layout = () => {
                     error={weather.error}
                 />
                 {console.log(weather.data)}
-            </div>
         </div>
     );
 };

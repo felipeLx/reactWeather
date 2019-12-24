@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import countryList from 'react-select-country-list';
 // import citiesList from 'react-select-cities';
 import Select from 'react-select';
+import classes from './Form.module.css';
 
 const Form = props => {
     const countryOptions = countryList().getData();
@@ -19,7 +20,7 @@ const Form = props => {
     // }
 
     return (
-        <div>
+        <div className={classes.Form}>
             <form onSubmit={props.getWeather}>
                 <input
                 type='text'
