@@ -38,7 +38,7 @@ const Weather = ({description, city, country, error, temperature}) => {
             {temperature && <p>{temperature} ºC</p>}
             {description && <p>Conditions: {description}</p>}
             {error && <p>{error}</p>}
-            {description && matchValues()}
+            {description && <p>{matchValues()}</p>}
         </div>
     );
 };

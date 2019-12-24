@@ -37,14 +37,16 @@ const Layout = () => {
     return (
         <div>
             <Form getWeather={fetchData} />
-            <Weather 
-                city={weather.city}
-                country={weather.country}
-                description={weather.description}
-                temperature={weather.temperature}
-                error={weather.error}
-             />
-            {console.log(weather.data)}
+            <div>
+                <Weather 
+                    city={weather.city}
+                    country={weather.country}
+                    description={weather.description}
+                    temperature={weather.temperature}
+                    error={weather.error}
+                />
+                {console.log(weather.data)}
+            </div>
         </div>
     );
 };
